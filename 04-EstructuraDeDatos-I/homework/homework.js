@@ -15,9 +15,28 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+    // condicional para cuando n sea 1, 0 o numeros negativos 
+    if (n == 1 ) {
+      return 1;
+    } else if( n < 0) {
+      return ' No se pueden ingresar numeros negativos ';
+    }
+  
+    // logica de factorial
+  
+    return n * nFactorial(n - 1);
 }
 
 function nFibonacci(n) {
+  if ( n < 0 ) {
+		return 'No puedes ingresar numeros negativos';
+  } else if ( n == 0 ) {
+		return 0;
+  } else if ( n == 1 ) {
+    return 1;
+  }
+  
+  return nFibonacci(n - 2) + nFibonacci(n - 1)
 }
 
 /*
@@ -29,9 +48,38 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 Pueden utilizar class o función constructora.
 */
 
-function Queue() {
+// creo la clase Queue
+class Queue {
+  constructor () {
+    this.arr = [];
+  }
 
+  // defino los metodos 
+  enqueue(el) {
+    this.arr.push(el);
+    return this.arr
+  }
+
+  dequeue() {
+    if ( this.arr.length > 0 ) {
+      return this.arr.shift()
+    }
+    else {
+      return undefined;
+    }
+  }
+
+  size() {
+    return this.arr.length;
+  }
+
+  
 }
+let queue = new Queue();
+console.log( queue.enqueue() );
+console.log( queue.dequeue() );
+console.log( queue.dequeue() );
+console.log( queue.size() );
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
